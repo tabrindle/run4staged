@@ -1,0 +1,24 @@
+{
+  "name": "run4staged",
+  "version": "1.0.0",
+  "description": "Run a given command/binary for staged git files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "staged",
+    "files",
+    "run",
+    "script"
+  ],
+  "author": "tabrindle@gmail.com",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "minimatch": "^3.0.4",
+    "minimist": "^1.2.0",
+    "staged-git-files": "^0.0.4"
+  }
+}
