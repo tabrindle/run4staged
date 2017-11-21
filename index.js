@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var exec = require('child_process').exec;
 var minimatch = require('minimatch');
 var sgf = require('staged-git-files');
