@@ -22,7 +22,11 @@ Simple task runner for staged git files
 
 - if running from a npm script, you can skip using `npm run` or `yarn` in the script
 
-`"lint:staged": "run4staged 'eslint --fix'"`
+```javascript
+"scripts": {
+  "lint:staged": "run4staged 'eslint --fix'"
+}
+```
 
 - verbose will give additional logging
 
