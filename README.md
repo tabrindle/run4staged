@@ -4,7 +4,7 @@ Simple task runner for staged git files
 
 ## Install
 
-`npm installed run4staged --dev`
+`npm install run4staged --save-dev` || `yarn add run4staged --dev`
 
 ## Usage
 
