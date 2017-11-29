@@ -12,9 +12,17 @@ Simple task runner for staged git files
 
 `run4staged 'echo'`
 
-- run4staged does not resolve npm bin binaries - either give it a full path, use `npm run` or `yarn`
+- specify a glob to select certain staged files, otherwise default is `**/*`
+
+`run4staged 'echo' --glob '*.jsx'`
+
+- run4staged does not resolve npm binaries - either give it a full path, use `npm run` or `yarn`
 
 `run4staged --command 'npm run eslint --fix'`
+
+- if running from a npm script, you can skip using `npm run` or `yarn` in the script
+
+`"lint:staged": "run4staged 'eslint --fix'"`
 
 - verbose will give additional logging
 

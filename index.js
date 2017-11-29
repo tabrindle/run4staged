@@ -6,7 +6,7 @@ var sgf = require('staged-git-files');
 var args = require('minimist')(process.argv.slice(2));
 
 var command = args._[0] || args.command;
-var glob = args.glob || '*';
+var glob = args.glob || '**/*';
 
 var run = cmd =>
   exec(cmd, (error, stdout) => {
@@ -22,9 +22,10 @@ var run = cmd =>
 if (command) {
   sgf('ACM', (err, results) => {
     if (err) {
-      if (args.verbose) console.error('No staged files.');
+      if (args.verbose) console.error(err);
       return;
     }
+    if (results.length === 0) if (args.verbose) console.error('No staged files.');
     var files = results
       .map(file => {
         if (args.verbose) console.log('Staged:', file.filename);
