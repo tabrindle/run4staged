@@ -2,6 +2,8 @@
 
 Simple task runner for staged git files
 
+[![Build Status](https://travis-ci.org/tabrindle/run4staged.svg?branch=master)](https://travis-ci.org/tabrindle/run4staged) [![npm version](https://badge.fury.io/js/run4staged.svg)](https://badge.fury.io/js/run4staged) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
 ## Install
 
 `npm install run4staged --save-dev` || `yarn add run4staged --dev`
