@@ -9,16 +9,12 @@ var command = args._[0] || args.command;
 var glob = args.glob || '**/*';
 
 var run = function run(cmd) {
-  var result;
   try {
-    result = (execSync(cmd).toString() || '').trim();
-    if (args.verbose) console.log(`Success: ${cmd}`);
+    execSync(cmd, { stdio: 'inherit' });
   } catch (error) {
-    result = error.stdout;
-    if (args.verbose) console.log('Error:', error.stdout);
+    if (args.verbose) console.log(`Error: ${cmd} failed with status ${error.status}`);
   }
-  if (!args.quiet) console.log(result);
-  return result;
+  if (args.verbose) console.log(`Success: ${cmd}`);
 };
 
 if (command) {

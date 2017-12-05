@@ -17,8 +17,8 @@ exports[`run4staged should: run with staged files using command arg 1`] = `"test
 
 exports[`run4staged should: run with verbose messaging 1`] = `
 "Staged: test/test.js
-Success: echo test/test.js
-test/test.js"
+test/test.js
+Success: echo test/test.js"
 `;
 
 exports[`run4staged shouldnt: run with no staged files 1`] = `""`;
