@@ -5,30 +5,23 @@ exports[`run4staged should:  display "no command" with verbose 1`] = `"No comman
 exports[`run4staged should:  run each staged file serially 1`] = `
 "test/test.jsx
 
-test/test.js
-
-index.test.js"
+test/test.js"
 `;
 
-exports[`run4staged should:  run each staged file silently 1`] = `"test/test.js index.test.js"`;
+exports[`run4staged should:  run each staged file silently 1`] = `"test/test.js"`;
 
 exports[`run4staged should:  run with correct staged files given glob 1`] = `"test/test.jsx"`;
 
-exports[`run4staged should:  run with staged files 1`] = `"test/test.js index.test.js"`;
+exports[`run4staged should:  run with staged files 1`] = `"test/test.js"`;
 
-exports[`run4staged should:  run with staged files using command arg 1`] = `"test/test.js index.test.js"`;
+exports[`run4staged should:  run with staged files using command arg 1`] = `"test/test.js"`;
 
 exports[`run4staged should:  run with verbose messaging 1`] = `
 "Staged: test/test.js
-Staged: index.test.js
-Success: echo test/test.js index.test.js
-test/test.js index.test.js"
+Success: echo test/test.js
+test/test.js"
 `;
 
-exports[`run4staged shouldnt:  run with no staged files 1`] = `"index.test.js"`;
+exports[`run4staged shouldnt:  run with no staged files 1`] = `""`;
 
-exports[`run4staged shouldnt:  run with no staged files and warn with verbose 1`] = `
-"Staged: index.test.js
-Success: echo index.test.js
-index.test.js"
-`;
+exports[`run4staged shouldnt:  run with no staged files and warn with verbose 1`] = `"No staged files."`;
