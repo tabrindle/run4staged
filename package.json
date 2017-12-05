@@ -4,6 +4,10 @@
   "description": "Run a given command/binary for staged git files",
   "main": "index.js",
   "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tabrindle/run4staged"
+  },
   "scripts": {
     "test": "jest",
     "npmRunTestScript": "echo YES"
