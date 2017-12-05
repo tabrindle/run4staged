@@ -22,10 +22,10 @@ var run = cmd =>
 if (command) {
   sgf('ACM', (err, results) => {
     if (err) {
-      if (args.verbose) console.error(err);
+      if (args.verbose) console.log(err);
       return;
     }
-    if (results.length === 0) if (args.verbose) console.error('No staged files.');
+    if (results.length === 0) if (args.verbose) console.log('No staged files.');
     var files = results
       .map(file => {
         if (args.verbose) console.log('Staged:', file.filename);
@@ -40,5 +40,5 @@ if (command) {
     }
   });
 } else {
-  if (args.verbose) console.error('No command.');
+  if (args.verbose) console.log('No command.');
 }

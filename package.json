@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "npmRunTestScript": "echo YES"
   },
   "keywords": [
     "git",
@@ -16,7 +17,10 @@
   ],
   "author": "tabrindle@gmail.com",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "rimraf": "^2.6.2"
+  },
   "dependencies": {
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
