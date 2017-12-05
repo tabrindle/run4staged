@@ -34,8 +34,12 @@ describe('run4staged should: ', () => {
     expect(run('node index.js --command "echo"')).toMatchSnapshot();
   });
 
-  it('run npm script correctly', () => {
-    expect(run('node index.js "yarn npmRunTestScript"')).toMatchSnapshot();
+  it('run npm script correctly with yarn', () => {
+    expect(run('node index.js "yarn npmRunTestScript"')).toContain('YES test/test.js');
+  });
+
+  it('run npm script correctly with npm', () => {
+    expect(run('node index.js "npm run npmRunTestScript"')).toContain('YES test/test.js');
   });
 
   it('run with correct staged files given glob', () => {
