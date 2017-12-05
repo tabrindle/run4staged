@@ -27,6 +27,8 @@ if (command) {
     }
     if (results.length === 0) if (args.verbose) console.log('No staged files.');
     var files = results
+      .slice()
+      .sort()
       .map(file => {
         if (args.verbose) console.log('Staged:', file.filename);
         return file.filename;
