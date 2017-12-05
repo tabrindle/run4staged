@@ -13,7 +13,7 @@ var run = function run(cmd) {
   ).trim();
 };
 
-describe('run4staged should: ', () => {
+describe('run4staged should:', () => {
   beforeEach(() => {
     rimraf.sync(path.resolve(__dirname, 'test'));
     fs.mkdirSync(path.resolve(__dirname, 'test'));
@@ -67,7 +67,7 @@ describe('run4staged should: ', () => {
   });
 });
 
-describe('run4staged shouldnt: ', () => {
+describe('run4staged shouldnt:', () => {
   it('run with no staged files', () => {
     rimraf.sync(path.resolve(__dirname, 'test'));
     expect(run('node index.js echo')).toMatchSnapshot();
