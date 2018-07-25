@@ -1,30 +1,36 @@
 #!/usr/bin/env node
 
-var execSync = require('child_process').execSync;
-var minimatch = require('minimatch');
-var sgf = require('staged-git-files');
-var args = require('minimist')(process.argv.slice(2));
+const execSync = require('child_process').execSync;
+const minimatch = require('minimatch');
+const sgf = require('staged-git-files');
+const args = require('minimist')(process.argv.slice(2));
 
-var command = args._[0] || args.command;
-var glob = args.glob || '**/*';
+const command = args._[0] || args.command;
+const glob = args.glob || '**/*';
 
-var run = function run(cmd) {
+const run = cmd => {
+  let status = 0;
   try {
     execSync(cmd, { stdio: 'inherit' });
-  } catch (error) {
-    if (args.verbose) console.log(`Error: ${cmd} failed with status ${error.status}`);
+    if (args.verbose) console.log(`Success: ${cmd}`);
+  } catch (err) {
+    if (args.verbose) console.log(`Error: ${cmd} failed with ${err}`);
+    status = err.status || 1;
   }
-  if (args.verbose) console.log(`Success: ${cmd}`);
+  return status;
 };
 
 if (command) {
   sgf('ACM', (err, results) => {
     if (err) {
       if (args.verbose) console.log(err);
-      return;
+      process.exit(1);
     }
-    if (results.length === 0) if (args.verbose) console.log('No staged files.');
-    var files = results
+    if (results.length === 0) {
+      if (args.verbose) console.log('No staged files.');
+      process.exit(1);
+    }
+    const files = results
       .slice()
       .sort()
       .map(file => {
@@ -32,13 +38,20 @@ if (command) {
         return file.filename;
       })
       .filter(minimatch.filter(glob));
-
-    if (args.serial) {
-      if (files.length > 0) files.map(file => `${command} ${file}`).map(run);
+    if (files.length > 0) {
+      if (args.serial) {
+        const status = files.map(file => run(`${command} ${file}`)).some(code => code > 0) ? 1 : 0;
+        process.exit(status);
+      } else {
+        const status = run(`${command} ${files.join(' ')}`);
+        process.exit(status);
+      }
     } else {
-      if (files.length > 0) run(`${command} ${files.join(' ')}`);
+      if (args.verbose) console.log('No files matching filter.');
+      process.exit(1);
     }
   });
 } else {
   if (args.verbose) console.log('No command.');
+  process.exit(1);
 }
