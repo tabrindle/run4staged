@@ -28,7 +28,7 @@ if (command) {
     }
     if (results.length === 0) {
       if (args.verbose) console.log('No staged files.');
-      process.exit(1);
+      process.exit(0);
     }
     const files = results
       .slice()
@@ -48,7 +48,7 @@ if (command) {
       }
     } else {
       if (args.verbose) console.log('No files matching filter.');
-      process.exit(1);
+      process.exit(0);
     }
   });
 } else {
